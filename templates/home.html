@@ -1,0 +1,155 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!--Custom Css-->
+    <link rel="stylesheet" type="text/css" href="{% static "css/reset.css" %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}"/>
+
+    <!--FontAwesome-->
+    <script src="https://kit.fontawesome.com/5cc1ff78db.js" crossorigin="anonymous"></script>
+
+    <!--Google Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Agdasima:wght@400;700&display=swap" rel="stylesheet">
+
+    <title>HorseManShop</title>
+
+{#    <script src="{% static 'js/events.js' %}"></script>#}
+
+
+</head>
+<body>
+    <header class="header">
+        <div class="on-top flex fn">
+            <div class="up w-flex">
+                <span class="crs"><i class="fa-solid fa-globe"></i></span>
+                <p><i class="fa-solid fa-phone"></i>&nbsp;&nbsp;+359 877 041 238</p>
+            </div>
+            <div>
+                <ul role="list" class="w-flex">
+                    <li><a href="#" class="fn">myCART</a></li>
+                    <li><a href="#" class="fn">LOGin</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="middle w-flex">
+            <a href="/" class="logo">Horse<span>Man</span>Shop</a>
+            <form class="search half-flex">
+                <input type="text" placeholder="Search...">
+                <button class="btn-form"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </form>
+            <div class="w-flex">
+                <a href="#" class="icon"><i class="fa-solid fa-cart-shopping"></i></a>
+                <a href="#" class="icon"><i class="fa-solid fa-user"></i></a>
+            </div>
+        </div>
+        <nav class="navigation">
+            <ul role="list" class="nav-list w-flex">
+                <li><a href="#" class="home">HOME</a></li>
+                <li class="li-nav-cat">
+                    <p class="crs">CATEGORIES&nbsp;</p>
+                    <i class="fa-solid fa-sort-down"></i>
+                    <div class="categories">
+                        <ul class="ul-categories">
+                            <!--LOAD FROM REST API-->
+                        </ul>
+            </div>
+                </li>
+                <li><p class="crs">COLLECTIONS&nbsp;</p><i class="fa-solid fa-sort-down"></i></li>
+                <li><p class="crs">REPELLENTS&nbsp;</p><i class="fa-solid fa-sort-down"></i></li>
+                <li><p class="crs">SHAMPOOS&nbsp;</p><i class="fa-solid fa-sort-down"></i></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="main">
+        <aside class="aside">
+            <ul role="list" class="aside-list">
+                <li>testtttttttt</li>
+            </ul>
+        </aside>
+        <section class="main-section flex">
+            <div class="ms-text">
+                <h2>spring/summer</h2>
+                <span>2023</span>
+                <h4>collections</h4>
+            </div>
+            <div class="ms-img-container">
+                <img src="{% static 'images/kelly-forrister.jpg' %}"/>
+            </div>
+        </section>
+        <section class="second-section">
+            <h3>Collections</h3>
+            <div class="ss-container">
+                <div class="cover">
+                    <p class="ss-f-par">T-Shirt</p>
+                    <img class="cover" src="{% static 'images/t-shirt.jpg' %}"/>
+                </div>
+                <div class="cover">
+                    <p class="ss-f-par">Boots</p>
+                    <img class="cover" src="{% static 'images/boots-riding.jpg' %}"/>
+                </div>
+                <div class="cover">
+                    <p class="ss-f-par">Breeches</p>
+                    <img class="cover" src="{% static 'images/breeches.png' %}"/>
+                </div>
+                <div class="cover">
+                    <p class="ss-f-par">Cloth</p>
+                    <img class="cover" src="{% static 'images/cloth.jpg' %}"/>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="footer">
+        <div class="f-info">
+            <div class="f-left v-flex">
+                <span>About us</span>
+                <p>Lorem ipsum dolor sit amet consectetur adipiscing elit,
+                    urna consequat felis vehicula class ultricies mollis dictumst,
+                    aenean non a in donec nulla. Phasellus ante pellentesque erat
+                    cum risus consequat imperdiet aliquam, integer placerat et turpis
+                    mi eros nec lobortis taciti, vehicula nisl litora tellus ligula porttitor metus.</p>
+                <div class="f-social w-flex">
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="f-middle v-flex">
+                <span>Information</span>
+                <ul>
+                    <li>Returns and exchanges</li>
+                    <li>Delivery</li>
+                    <li>Gift Card</li>
+                </ul>
+            </div>
+            <div class="f-right v-flex">
+                <span>Contact us</span>
+                <ul>
+                    <li>+359 888 123 456</li>
+                    <li>example@mail.com</li>
+                    <li>address</li>
+                </ul>
+                <div class="f-pay-methods">
+                    <span class="sp-pay">payment methods</span>
+                    <div class="f-pay-order w-flex">
+                        <img src="{% static 'images/icons8-mastercard-48.png' %}"/>
+                        <img src="{% static 'images/icons8-visa-48.png' %}"/>
+                        <img src="{% static 'images/icons8-paypal-48.png' %}"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p class="f-paragraph">Copyright by &copy;<span>DVI</span></p>
+    </footer>
+
+ <script src="{% static 'js/events.js' %}"></script>
+
+</body>
+</html>
