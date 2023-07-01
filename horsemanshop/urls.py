@@ -22,7 +22,7 @@ from horsemanshop import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('shop/', include('horsemanshop.shop.urls')),
+    path('api/', include('horsemanshop.shop.urls')),
     path('', include('horsemanshop.ui.urls')),
     path('api-auth/', include('rest_framework.urls'))
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) \

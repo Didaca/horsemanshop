@@ -48,7 +48,8 @@ class Article(models.Model):
         ("black", "BLACK"),
         ("white", "WHITE"),
         ("grey", "GREY"),
-        ("blue", "BLUE")
+        ("blue", "BLUE"),
+        ("pink", "PINK")
     ]
 
     name = models.CharField(

@@ -21,7 +21,7 @@
 
     <title>HorseManShop</title>
 
-{#    <script src="{% static 'js/events.js' %}"></script>#}
+{#    <script src="{% static 'js/api_categories.js' %}"></script>#}
 
 
 </head>
@@ -58,9 +58,9 @@
                     <i class="fa-solid fa-sort-down"></i>
                     <div class="categories">
                         <ul class="ul-categories">
-                            <!--LOAD FROM REST API-->
+                            <!--LOAD WITH REST API-->
                         </ul>
-            </div>
+                    </div>
                 </li>
                 <li><p class="crs">COLLECTIONS&nbsp;</p><i class="fa-solid fa-sort-down"></i></li>
                 <li><p class="crs">REPELLENTS&nbsp;</p><i class="fa-solid fa-sort-down"></i></li>
@@ -70,9 +70,7 @@
     </header>
     <main class="main">
         <aside class="aside">
-            <ul role="list" class="aside-list">
-                <li>testtttttttt</li>
-            </ul>
+            <!--LOAD WITH REST API-->
         </aside>
         <section class="main-section flex">
             <div class="ms-text">
@@ -149,7 +147,9 @@
         <p class="f-paragraph">Copyright by &copy;<span>DVI</span></p>
     </footer>
 
- <script src="{% static 'js/events.js' %}"></script>
+    <script src="{% static 'js/api_categories.js' %}"></script>
+    <script src="{% static 'js/api_load_articles.js' %}"></script>
+    <script src="{% static 'js/events.js' %}"></script>
 
 </body>
 </html>

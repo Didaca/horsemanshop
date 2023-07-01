@@ -224,11 +224,38 @@ span {
 }
 
 .aside {
-    display: none;
+    visibility: hidden;
+    opacity: 0;
     position: absolute;
     top: 0;
     left: 240px;
+    padding: 12px 12px 12px 30px;
+    border-radius: 4px;
+    background-color: var(--hidden);
+    box-shadow: 0 0 4px var(--letters);
     z-index: 2;
+}
+
+.aside-list {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    list-style-type: circle;
+    text-transform: uppercase;
+    transition: all 0.3s ease-in;
+}
+
+
+.a-aside {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.li-aside:hover {
+    list-style-type: disc;
 }
 
 .main-section {
@@ -311,6 +338,7 @@ span {
     margin: 0;
     list-style-type: disclosure-closed;
     list-style-position: inside;
+    transition: all 0.3s ease-in;
 }
 
 .f-middle ul li:hover,
