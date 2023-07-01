@@ -9,4 +9,7 @@
 
 !['Categories'](/static/screenshots/rest-api-data.png)
 
+#
+#
+
 ![Articles](/static/screenshots/rest-api-data-2.png)
