@@ -5,7 +5,12 @@
 !['Home Page'](/static/screenshots/screenshot-main.png)
 
 
-### Load data from REST API
+### Load data with REST API
+
+!['REST API'](/static/screenshots/rest-api.png)
+
+#
+#
 
 !['Categories'](/static/screenshots/rest-api-data.png)
 
