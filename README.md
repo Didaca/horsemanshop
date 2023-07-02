@@ -1,6 +1,6 @@
 # Web application - horsemanshop
 
-## This demo application with demo Home Page is built with Django REST API and uses MySQL
+## This demo application with demo Home Page is built with Django REST Framework & RESTful API
 
 !['Home Page'](/static/screenshots/screenshot-main.png)
 

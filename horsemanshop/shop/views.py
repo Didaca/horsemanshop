@@ -21,6 +21,10 @@ class ArticleListView(ListAPIView):
 
 class ArticleDetailsView(APIView):
 
+    permission_classes = {
+        permissions.IsAuthenticatedOrReadOnly
+    }
+
     def get_object(self, pk):
         try:
             return Article.objects.get(pk=pk)
