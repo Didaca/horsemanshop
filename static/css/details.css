@@ -1,0 +1,44 @@
+.article-details,
+.info-art-content,
+.art-desc,
+.art-img {
+    width: 100%;
+}
+
+.article-details {
+    padding: 36px;
+    gap: 60px;
+}
+
+.info-art-content {
+    display: grid;
+    grid-template-columns: 60% auto;
+    align-items: baseline;
+    gap: 60px;
+}
+
+.art-name {
+    font-size: 32px;
+    text-transform: capitalize;
+}
+
+.art-type,
+.art-color,
+.art-size {
+    font-size: 26px;
+}
+
+.art-price {
+    font-size: 32px;
+}
+
+.art-desc-par {
+    text-align: justify;
+}
+
+.art-ul {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 30px;
+}

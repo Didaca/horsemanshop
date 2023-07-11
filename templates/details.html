@@ -10,6 +10,7 @@
     <!--Custom Css-->
     <link rel="stylesheet" type="text/css" href="{% static "css/reset.css" %}"/>
     <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}"/>
+     <link rel="stylesheet" type="text/css" href="{% static 'css/details.css' %}"/>
 
     <!--FontAwesome-->
     <script src="https://kit.fontawesome.com/5cc1ff78db.js" crossorigin="anonymous"></script>
@@ -70,33 +71,17 @@
             <!--LOAD WITH REST API-->
         </aside>
         <section class="main-section flex">
-            <div class="ms-text">
-                <h2>spring/summer</h2>
-                <span>2023</span>
-                <h4>collections</h4>
-            </div>
-            <div class="ms-img-container">
-                <img src="{% static 'images/kelly-forrister.jpg' %}"/>
-            </div>
-        </section>
-        <section class="second-section">
-            <h3>Collections</h3>
-            <div class="ss-container">
-                <div class="cover">
-                    <p class="ss-f-par">T-Shirt</p>
-                    <img class="cover" src="{% static 'images/t-shirt.jpg' %}"/>
+            <div class="article-details v-flex">
+                <div class="info-art-content">
+                    <div class="img-content">
+                        <!--LOAD WITH REST API-->
+                    </div>
+                    <ul role="list" class="art-ul">
+                        <!--LOAD WITH REST API-->
+                    </ul>
                 </div>
-                <div class="cover">
-                    <p class="ss-f-par">Boots</p>
-                    <img class="cover" src="{% static 'images/boots-riding.jpg' %}"/>
-                </div>
-                <div class="cover">
-                    <p class="ss-f-par">Breeches</p>
-                    <img class="cover" src="{% static 'images/breeches.png' %}"/>
-                </div>
-                <div class="cover">
-                    <p class="ss-f-par">Cloth</p>
-                    <img class="cover" src="{% static 'images/cloth.jpg' %}"/>
+                <div class="art-desc">
+                    <!--LOAD WITH REST API-->
                 </div>
             </div>
         </section>
@@ -147,6 +132,6 @@
     <script src="{% static 'js/api_categories.js' %}"></script>
     <script src="{% static 'js/api_load_articles.js' %}"></script>
     <script src="{% static 'js/events.js' %}"></script>
-
+    <script src="{% static 'js/api_article_details.js' %}"></script>
 </body>
 </html>

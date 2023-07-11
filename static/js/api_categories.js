@@ -1,4 +1,4 @@
-const urls = {
+const api_urls = {
     allCategories: () => '/api/categories/',
     article: (id) => `/api/article/${id}/`,
 };
@@ -29,7 +29,7 @@ function CreateList(all) {
 
 function GetCategories() {
 
-    const { allCategories } = urls;
+    const { allCategories } = api_urls;
 
     return  fetch(allCategories())
         .then(response => response.json())

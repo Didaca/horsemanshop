@@ -1,6 +1,11 @@
+const urls = {
+    article: (id) =>`/article/${id}`
+}
+
+
 function CreateArticlesList(data, name) {
 
-    const { _, article } = urls;
+    const { article } = urls;
 
     const aside = document.querySelector('.aside');
     const all_articles = data.filter(a => a.name === name)[0].article_set;
