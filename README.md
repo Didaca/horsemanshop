@@ -1,6 +1,6 @@
 # Web application - horsemanshop
 
-## This demo application with demo Home Page is built with Django REST Framework & RESTful API
+## This demo web application with demo HomePage is for Django REST API built with Django REST Framework
 
 !['Home Page'](/static/screenshots/screenshot-main.png)
 

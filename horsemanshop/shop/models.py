@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.db import models
 from django.core import validators
 
@@ -90,6 +91,8 @@ class Article(models.Model):
         Category,
         on_delete=models.CASCADE
     )
+
+    owner = models.ForeignKey(User, related_name='articles', on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name
