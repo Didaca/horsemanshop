@@ -1,5 +1,5 @@
 from django.http import Http404
-from rest_framework import status, permissions
+from rest_framework import status, permissions, authentication
 from rest_framework.generics import CreateAPIView, ListAPIView
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -12,6 +12,10 @@ from horsemanshop.shop.serializers import ArticleSerializer, CategorySerializer,
 class ArticleListView(ListAPIView):
     queryset = Article.objects.all()
     serializer_class = ArticleForListSerializer
+    authentication_classes = [
+        authentication.SessionAuthentication,
+        authentication.TokenAuthentication
+    ]
     permission_classes = [
         permissions.IsAuthenticatedOrReadOnly
     ]
@@ -28,6 +32,10 @@ class ArticleListView(ListAPIView):
 
 class ArticleDetailsView(APIView):
 
+    authentication_classes = [
+        authentication.SessionAuthentication,
+        authentication.TokenAuthentication
+    ]
     permission_classes = [
         permissions.IsAuthenticatedOrReadOnly,
         IsOwner
@@ -65,6 +73,10 @@ class ArticleCreateView(CreateAPIView):
 
     queryset = Article.objects.all()
     serializer_class = ArticleSerializer
+    authentication_classes = [
+        authentication.SessionAuthentication,
+        authentication.TokenAuthentication
+    ]
     permission_classes = [
         permissions.IsAuthenticated,
         IsOwner
@@ -86,6 +98,10 @@ class ArticleCreateView(CreateAPIView):
 class CategoryListView(ListAPIView):
     queryset = Category.objects.all().prefetch_related('article_set')
     serializer_class = CategorySerializer
+    authentication_classes = [
+        authentication.SessionAuthentication,
+        authentication.TokenAuthentication
+    ]
     permission_classes = [
         permissions.IsAuthenticatedOrReadOnly
     ]
