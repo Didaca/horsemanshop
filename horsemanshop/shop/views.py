@@ -1,24 +1,22 @@
 from django.http import Http404
-from rest_framework import status, permissions, authentication
+from rest_framework import status
 from rest_framework.generics import CreateAPIView, ListAPIView
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
+from horsemanshop.shop.mixins import IsAuthenticatedOrReadOnlyPermissionsMixin, IsOwnerPermissionsMixin,\
+    IsAuthenticatedPermissionsMixin
 from horsemanshop.shop.models import Article, Category
-from horsemanshop.shop.permissions import IsOwner
 from horsemanshop.shop.serializers import ArticleSerializer, CategorySerializer, ArticleForListSerializer
 
 
-class ArticleListView(ListAPIView):
+class ArticleListView(
+    IsAuthenticatedOrReadOnlyPermissionsMixin,
+    ListAPIView
+):
+
     queryset = Article.objects.all()
     serializer_class = ArticleForListSerializer
-    authentication_classes = [
-        authentication.SessionAuthentication,
-        authentication.TokenAuthentication
-    ]
-    permission_classes = [
-        permissions.IsAuthenticatedOrReadOnly
-    ]
 
     def list(self, request, *args, **kwargs):
         queryset = super().get_queryset()
@@ -30,16 +28,28 @@ class ArticleListView(ListAPIView):
         serializer.save(owner=self.request.user)
 
 
-class ArticleDetailsView(APIView):
+class ArticleDetailsView(
+    IsAuthenticatedOrReadOnlyPermissionsMixin,
+    APIView
+):
 
-    authentication_classes = [
-        authentication.SessionAuthentication,
-        authentication.TokenAuthentication
-    ]
-    permission_classes = [
-        permissions.IsAuthenticatedOrReadOnly,
-        IsOwner
-    ]
+    @staticmethod
+    def get_object(pk):
+        try:
+            return Article.objects.get(pk=pk)
+        except Article.DoesNotExist:
+            raise Http404
+
+    def get(self, request, pk):
+        article = self.get_object(pk)
+        serializer = ArticleSerializer(article)
+        return Response(serializer.data)
+
+
+class ArticleUpdateDeleteView(
+    IsOwnerPermissionsMixin,
+    APIView
+):
 
     @staticmethod
     def get_object(pk):
@@ -69,18 +79,13 @@ class ArticleDetailsView(APIView):
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 
-class ArticleCreateView(CreateAPIView):
+class ArticleCreateView(
+    IsAuthenticatedPermissionsMixin,
+    CreateAPIView
+):
 
     queryset = Article.objects.all()
     serializer_class = ArticleSerializer
-    authentication_classes = [
-        authentication.SessionAuthentication,
-        authentication.TokenAuthentication
-    ]
-    permission_classes = [
-        permissions.IsAuthenticated,
-        IsOwner
-    ]
 
     def get(self, request, *args, **kwargs):
         queryset = super().get_queryset()
@@ -95,16 +100,13 @@ class ArticleCreateView(CreateAPIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-class CategoryListView(ListAPIView):
+class CategoryListView(
+    IsAuthenticatedOrReadOnlyPermissionsMixin,
+    ListAPIView
+):
+
     queryset = Category.objects.all().prefetch_related('article_set')
     serializer_class = CategorySerializer
-    authentication_classes = [
-        authentication.SessionAuthentication,
-        authentication.TokenAuthentication
-    ]
-    permission_classes = [
-        permissions.IsAuthenticatedOrReadOnly
-    ]
 
     def list(self, request, *args, **kwargs):
         queryset = super().get_queryset()
