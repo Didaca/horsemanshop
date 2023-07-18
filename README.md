@@ -15,3 +15,6 @@
 #
 #
 !['Article Details'](/static/screenshots/article-details.png)
+
+## Pagination
+!['Pagination'](/static/screenshots/pagination.png)
