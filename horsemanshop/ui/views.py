@@ -1,9 +1,10 @@
+from django.http import Http404
 from django.views import generic
-from django.contrib.auth.models import User
 from rest_framework import generics, permissions
 
-from horsemanshop.shop.models import Article
-from horsemanshop.ui.serializers import UsersSerializer, UserSerializer
+from horsemanshop.shop.models import Article, User
+from horsemanshop.shop.serializers import ArticleSerializer
+from horsemanshop.ui.serializers import UsersSerializer, UserSerializer, CreateUserSerializer
 
 
 class HomePageView(generic.TemplateView):
@@ -13,6 +14,11 @@ class HomePageView(generic.TemplateView):
 class ArticleDetailsView(generic.DetailView):
     queryset = Article.objects.all()
     template_name = 'details.html'
+
+
+class CreateUserView(generics.CreateAPIView):
+    queryset = User.objects.all()
+    serializer_class = CreateUserSerializer
 
 
 class UserListView(generics.ListAPIView):
@@ -29,3 +35,15 @@ class UserDetailView(generics.RetrieveAPIView):
     permission_classes = [
         permissions.IsAdminUser
     ]
+
+
+class UserArticlesListView(generics.ListAPIView):
+    serializer_class = ArticleSerializer
+
+    def get_queryset(self):
+
+        try:
+            user = self.request.user
+            return Article.objects.filter(owner=user)
+        except User.DoesNotExist:
+            raise Http404

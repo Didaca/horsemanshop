@@ -7,7 +7,8 @@ from rest_framework.views import APIView
 from horsemanshop.shop.mixins import IsAuthenticatedOrReadOnlyPermissionsMixin, IsOwnerPermissionsMixin,\
     IsAuthenticatedPermissionsMixin
 from horsemanshop.shop.models import Article, Category
-from horsemanshop.shop.serializers import ArticleSerializer, CategorySerializer, ArticleForListSerializer
+from horsemanshop.shop.serializers import ArticleSerializer, CategorySerializer, ArticleForListSerializer, \
+    CreateArticleSerializer
 
 
 class ArticleListView(
@@ -85,7 +86,7 @@ class ArticleCreateView(
 ):
 
     queryset = Article.objects.all()
-    serializer_class = ArticleSerializer
+    serializer_class = CreateArticleSerializer
 
     def get(self, request, *args, **kwargs):
         queryset = super().get_queryset()
@@ -93,7 +94,7 @@ class ArticleCreateView(
         return Response(serializer.data)
 
     def post(self, request, *args, **kwargs):
-        serializer = ArticleSerializer(data=request.data)
+        serializer = CreateArticleSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
