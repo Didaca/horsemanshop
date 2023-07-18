@@ -7,6 +7,7 @@ from horsemanshop.shop.serializers import ArticleSerializer
 from horsemanshop.ui.serializers import UsersSerializer, UserSerializer, CreateUserSerializer
 
 
+# demo views
 class HomePageView(generic.TemplateView):
     template_name = "home.html"
 
@@ -16,6 +17,7 @@ class ArticleDetailsView(generic.DetailView):
     template_name = 'details.html'
 
 
+# api views
 class CreateUserView(generics.CreateAPIView):
     queryset = User.objects.all()
     serializer_class = CreateUserSerializer

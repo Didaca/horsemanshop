@@ -94,7 +94,11 @@ class Article(models.Model):
         on_delete=models.CASCADE
     )
 
-    owner = models.ForeignKey(User, related_name='articles', on_delete=models.CASCADE)
+    owner = models.ForeignKey(
+        User,
+        related_name='articles',
+        on_delete=models.CASCADE
+    )
 
     def __str__(self):
         return self.name

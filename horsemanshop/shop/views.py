@@ -1,6 +1,7 @@
 from django.http import Http404
 from rest_framework import status
-from rest_framework.generics import CreateAPIView, ListAPIView
+from rest_framework import generics
+
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
@@ -13,7 +14,7 @@ from horsemanshop.shop.serializers import ArticleSerializer, CategorySerializer,
 
 class ArticleListView(
     IsAuthenticatedOrReadOnlyPermissionsMixin,
-    ListAPIView
+    generics.ListAPIView
 ):
 
     queryset = Article.objects.all()
@@ -21,12 +22,13 @@ class ArticleListView(
 
     def list(self, request, *args, **kwargs):
         queryset = super().get_queryset()
+        page = super().paginate_queryset(queryset)
+        if page is not None:
+            serializer = self.get_serializer(page, many=True)
+            return self.get_paginated_response(serializer.data)
         serializer = ArticleForListSerializer(queryset, many=True)
 
         return Response(serializer.data)
-
-    def perform_create(self, serializer):
-        serializer.save(owner=self.request.user)
 
 
 class ArticleDetailsView(
@@ -82,7 +84,7 @@ class ArticleUpdateDeleteView(
 
 class ArticleCreateView(
     IsAuthenticatedPermissionsMixin,
-    CreateAPIView
+    generics.CreateAPIView
 ):
 
     queryset = Article.objects.all()
@@ -103,7 +105,7 @@ class ArticleCreateView(
 
 class CategoryListView(
     IsAuthenticatedOrReadOnlyPermissionsMixin,
-    ListAPIView
+    generics.ListAPIView
 ):
 
     queryset = Category.objects.all().prefetch_related('article_set')
@@ -111,6 +113,10 @@ class CategoryListView(
 
     def list(self, request, *args, **kwargs):
         queryset = super().get_queryset()
+        page = super().paginate_queryset(queryset)
+        if page is not None:
+            serializer = self.get_serializer(page, many=True)
+            return self.get_paginated_response(serializer.data)
         serializer = CategorySerializer(queryset, many=True)
 
         return Response(serializer.data)
