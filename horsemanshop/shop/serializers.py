@@ -34,8 +34,7 @@ class CreateArticleSerializer(serializers.ModelSerializer):
             'image',
             'price',
             'description',
-            'category',
-            'owner'
+            'category'
         ]
 
 
